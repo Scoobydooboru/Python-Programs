@@ -1,0 +1,25 @@
+print("The following displays all Prime Numbers from 2-100")
+
+print (" ")
+print("A Prime Number is a whole number greater than 1")
+
+print("which is only divisible by itself.")
+
+print('____________________')
+
+
+def prime ():
+
+    for num in range(2,100):
+    
+        for i in range(2,num):
+       
+            if (num%i==0):
+            
+                break
+    
+        else:
+        
+            print(num, "is a prime number!")
+
+prime()
