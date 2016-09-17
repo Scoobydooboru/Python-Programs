@@ -1,0 +1,54 @@
+def grabfile():
+    ExitLoop=False
+    while ExitLoop==False:
+        try:
+            pathfile=input("What is the path of your file?")
+            # "C:/textfiles/sample.txt"
+            file= open(pathfile,"r")
+            return file
+            #ExitLoop=True
+        except FileNotFoundError:
+            print("The file was not found, try again")
+
+        except PermissionError:
+            ExitLoop=True
+
+def readfile(theFile):
+    a = 0
+    endofsentence = 0 #tracks the end of sentence delimeters
+    report=theFile.read() #reads the list and stores it into a string named report
+    count = len(report) # gets the length of report
+    for a in range(0, count):
+        if report[a] == '.' or report[a] == ',' or report[a] == '!' or report[a] or report[a] == ';' or report[a] == "?" or report[a] == ":":  
+            endofsentence += 1 # incremenets sentence every time a delimeter is found
+    words = report.split() # create a list of words split on space, ask the user the mininum number of words that they want with try/except
+    print(words) # prints the list
+    validwords = 0 # checks for valid words
+    testword = 0
+    b = 0
+    try:
+        userchoice=int(input("Please enter the minimum number of letters that you believe constitutes a valid word"))
+    except ValueError:
+        print("This is not a number. Please enter a number. Namaste")
+    for a in words: # cycle through word list looking for valid words
+        testword = words[b]
+        testword = len(testword)
+        if testword >= userchoice: #replace with userchoice
+            validwords += 1
+        b += 1
+
+    numberwords = len(words)
+    print("The number of words is", len(words), "The total number of valid words is", validwords)
+    print("The total number of sentences is ", endofsentence)
+    print("The average number of words per sentence is", validwords / endofsentence)
+main()
+        testword = len(testword)
+        if testword >= userchoice: #replace with userchoice
+            validwords += 1
+        b += 1
+
+    numberwords = len(words)
+    print("The number of words is", len(words), "The total number of valid words is", validwords)
+    print("The total number of sentences is ", endofsentence)
+    print("The average number of words per sentence is", validwords / endofsentence)
+main()
